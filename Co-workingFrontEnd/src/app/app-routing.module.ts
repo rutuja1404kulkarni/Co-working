@@ -27,7 +27,7 @@ const routes: Routes = [
   // {path:'edit',component:InformationUpdateComponent},
   {path:'add-property',component:AddPropertiesComponent},
   {path:'about',component:AboutUsComponent},
-  {path: 'card', component: CardComponent},
+  {path: 'card/:category', component: CardComponent},
   {path: 'details', component:BookingComponent},
   {path: 'client-dashboard',component:ClientDashboardComponent},
   // {path:'Profile',component:ClientProfileComponent}

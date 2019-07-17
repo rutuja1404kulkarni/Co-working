@@ -8,13 +8,25 @@ export class ClientProfileService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getClientData():any{
-    return this.httpClient.get("http://localhost:3000/client-recommendation-details")
-  
-   }
+  // getClientData():any{
+  //   return this.httpClient.get("http://localhost:3000/client-recommendation-details")
+  //  }
 
-   getdetails():any{
-    return this.httpClient.get("http://localhost:3000/clientname")
+  getClientData(address):any{
+    return this.httpClient.get(`http://localhost:8006/v1/api/space/location/${address}`);
+  }
+
+  //  getdetails():any{
+  //   return this.httpClient.get("http://localhost:3000/clientname")
   
+  // }
+
+  getClientDataBasedOnPrice():any{
+    return this.httpClient.get(`http://localhost:8006/v1/api/contains/priceRecommendation`)
+
+  }
+
+  getClientDataBasedOnLocation():any{
+    return this.httpClient.get('http://localhost:8006/v1/api/located/recommendationLoc')
   }
 }

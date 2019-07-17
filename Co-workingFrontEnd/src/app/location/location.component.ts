@@ -23,7 +23,7 @@ export class LocationComponent implements OnInit {
   
   onNoClick(location){
     console.log(location);
-    // location=location;
+    sessionStorage.setItem("location",location)
     this.locationService.location=location;
     this.dialogRef.close();
   }

@@ -8,31 +8,43 @@ import { ClientDashboardService } from '../client-dashboard.service';
 })
 export class ClientDashboardComponent implements OnInit {
 
-  
-  constructor(private clientService:ClientDashboardService ) { }
-  ArrayOfClientData : any = [];
+  ArrayOfClientSpace : any = [];
   ArrayOfdetails: any =[];
+  userName:string
+  contactNumber:any;
+  emailId:any;
+  i:any;
+  
+  constructor(private clientDashboardService:ClientDashboardService ) {
+    this.userName=sessionStorage.getItem('username')
+    console.log(this.userName)
+    this.contactNumber=sessionStorage.getItem('contactNumber');
+    console.log(this.contactNumber)
+    this.emailId=sessionStorage.getItem('emailId');
+    console.log(this.emailId)
 
+
+   }
+ 
   ngOnInit() {
-
-    {
-      this.clientService.getClientData().subscribe(data=>
-          {
-           console.log(data);
-          
-           this.ArrayOfClientData=data;
-        });
+    this.getSpaceDetailsByUserName();
   }
 
-  {
-    this.clientService.getdetails().subscribe(data=>
-        {
-         console.log(data);
-    
-         this.ArrayOfdetails=data;
+  getSpaceDetailsByUserName():any{
+    console.log(this.userName);
+
+    this.clientDashboardService.getSpaceDetailsByUserName(this.userName).subscribe(data=>
+      {
+        console.log(data);
+        this.ArrayOfClientSpace=data;
+       
       });
-}
+
 
   }
+
+ 
+
+
 
 }

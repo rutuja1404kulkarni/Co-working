@@ -15,4 +15,8 @@ export class ClientDashboardService {
   getdetails():any{
     return this.httpClient.get("http://localhost:3000/details")
   }
+
+  getSpaceDetailsByUserName(username):any{
+    return this.httpClient.get(`http://localhost:8090/api/v1/space/${username}`);
+  }
 }

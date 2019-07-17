@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientDashboardService } from '../client-dashboard.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-client-profile',
@@ -8,15 +9,13 @@ import { ClientDashboardService } from '../client-dashboard.service';
 })
 export class ClientProfileComponent implements OnInit {
   ArrayOfClientData:any=[];
-  constructor(private clientService:ClientDashboardService) { }
+  address:string;
+  constructor(private clientService:ClientDashboardService,private userService:UserService) { }
 
   ngOnInit() {
-    this.clientService.getClientData().subscribe(data=>
-      {
-       console.log(data);
-      //  console.log
-       this.ArrayOfClientData=data;
-    });
+    // this.address=sessionStorage.getItem('address');
+
   }
+
 
 }

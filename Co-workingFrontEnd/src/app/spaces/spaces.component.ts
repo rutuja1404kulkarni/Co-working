@@ -23,10 +23,7 @@ export class SpacesComponent implements OnInit {
       console.log(this.arrayOfSpace);
     });
 
-    // this.cardService.getCategory1().subscribe(data => {
-    //   console.log(data);
-    //   console.log(data[0].categoryname);
-    // })
+   
   }
 
 }

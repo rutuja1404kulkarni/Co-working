@@ -13,8 +13,8 @@ export class PlansComponent implements OnInit {
   ngOnInit() {
   }
 
-  click(){
-
-    this.router.navigateByUrl("/card");
+  click(value){
+    console.log(value)
+    this.router.navigateByUrl("card/"+value);
   }
 }

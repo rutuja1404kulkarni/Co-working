@@ -14,6 +14,10 @@ export class LocationService {
 
   getSpaceByLocation(location):any{
     console.log("In location Service");
-    return this.httpClient.get(`http://localhost:8099/v1/api/space/location/${location}`);
+    return this.httpClient.get(`http://localhost:8006/v1/api/IsIn/recommendationLocCity/${location}`)
+  }
+
+  getCategoryByLocation(location):any{
+    return this.httpClient.get(`http://localhost:8005/api/v1/location/${location}`)
   }
 }

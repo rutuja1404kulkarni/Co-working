@@ -15,10 +15,11 @@ export class NavbarComponent implements OnInit {
   helper=new JwtHelperService();
   name: any;
   password: any;
+  userDetail:any=[];
   constructor(private userService:UserService, private route: ActivatedRoute, private router:Router,private modal:NgbModal) { }
   arrayOfUser:any[];
   ngOnInit() {
-    console.log("in ngoninit")
+    
   }
 
   authenticateUser(name,password)
@@ -30,8 +31,32 @@ export class NavbarComponent implements OnInit {
       name:name,
       password:password
     }
+
+    sessionStorage.setItem('username',userdata.name)
+    console.log(sessionStorage.getItem('username'));
+    let userName=sessionStorage.getItem('username')
     console.log("object ",userdata);
     this.userService.authenticateUser(userdata);
+
+    this.userService.getDataByName(userName).subscribe(data=>{
+      this.userDetail=data;
+      console.log(this.userDetail)
+
+      this.address=this.userDetail.address;
+      sessionStorage.setItem("address",this.address);
+
+      this.contact=this.userDetail.contactNumber;
+      sessionStorage.setItem("contactNumber",this.contact);
+      console.log(sessionStorage.getItem('contactNumber'));
+
+      this.email=this.userDetail.emailId;
+      sessionStorage.setItem("emailId",this.email);
+
+    
+    });
+
+
+
     this.userService.getToken(userdata).subscribe(data=>{
         console.log(data);
          sessionStorage.setItem('token',data.token);
@@ -49,7 +74,7 @@ export class NavbarComponent implements OnInit {
 
         }
         
-    })
+    });
   }
   user:any;
   email:any;
@@ -67,9 +92,11 @@ export class NavbarComponent implements OnInit {
       password:pass,
       address:address
     }
-
-    console.log(userDetails);
+    console.log(user);
+    // console.log(userDetails);
     this.userService.registerUser(userDetails).subscribe();
+    // this.userService.userDetail=userDetails;
+    console.log("we have to pass data",this.userService.userDetail)
   }
 
  

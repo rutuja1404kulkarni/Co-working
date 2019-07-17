@@ -18,4 +18,12 @@ export class CardService {
   getCategory1(): any {
     return this.httpclient.get("http://localhost:3000/category1")
   }
+
+  getByCategory(category): any {
+    console.log("in category"+category);
+    return this.httpclient.get(`http://localhost:8005/api/v1/category/${category}`);
+  }
+  getSpaceDetails(name):any{
+    return this.httpclient.get(`http://localhost:8005/api/v1/space/${name}`)
+  }
 }
